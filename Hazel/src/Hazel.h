@@ -3,8 +3,14 @@
 //For use by Hazel applications
 
 #include <stdio.h>
-#include "Hazel/Application.h"
+#include "Hazel/Core/Application.h"
+#include "Hazel/Core/Log.h"
+
+#include "Hazel/Core/Input.h"
+
+
+#include "Hazel/ImGui/ImGuiLayer.h"
 
 //--Entry point--
-#include "Hazel/EntryPoint.h"
+#include "Hazel/Core/EntryPoint.h"
 //---------------
