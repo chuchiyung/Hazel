@@ -59,9 +59,9 @@ project "Hazel"
 	{
 		"GLFW",
 		"Glad",
-		"ImGui"
+		"ImGui",
 
-		--"opengl32.lib"
+		"opengl32.lib"
 	}
 
 	filter "system:windows"

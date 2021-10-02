@@ -8,15 +8,20 @@
 
 namespace Hazel {
 
-	Application* Application::s_Instance = nullptr;
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+
+	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
 	{
 		HZ_ASSERT(!s_Instance," Failed to initialize Application");
 		s_Instance = this;
+
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 	}
 
 	Application::~Application()
@@ -58,7 +63,12 @@ namespace Hazel {
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
-			m_Window->OnUpdate();
+			m_ImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+				layer->OnImGuiRender();
+			m_ImGuiLayer->End();
+
+			m_Window->OnUpdate();	
 		}
 	}
 
