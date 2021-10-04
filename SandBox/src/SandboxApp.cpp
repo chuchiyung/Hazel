@@ -1,6 +1,8 @@
 #include "Hazel.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Hazel::Layer
 {
 public:
@@ -11,13 +13,17 @@ public:
 
 	void OnUpdate() override
 	{
-		HZ_INFO("ExampleLayer::Update");
+		
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		
 	}
 
 	void OnEvent(Hazel::Event& event) override
 	{
 
-		
 	}
 
 };
