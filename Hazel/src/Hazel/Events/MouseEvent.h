@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Hazel/Events/Event.h"
-//#include "Hazel/Core/MouseCodes.h"
+#include "Hazel/Core/MouseCodes.h"
 
 #include <sstream>
 
@@ -32,11 +32,11 @@ namespace Hazel {
 	class HAZEL_API MouseScrolledEvent : public Event
 	{
 	public:
-		MouseScrolledEvent(const float xOffset, const float yOffset)
+		MouseScrolledEvent(float xOffset, float yOffset)
 			: m_XOffset(xOffset), m_YOffset(yOffset) {}
 
-		float GetXOffset() const { return m_XOffset; }
-		float GetYOffset() const { return m_YOffset; }
+		inline float GetXOffset() const { return m_XOffset; }
+		inline float GetYOffset() const { return m_YOffset; }
 
 		std::string ToString() const override
 		{
