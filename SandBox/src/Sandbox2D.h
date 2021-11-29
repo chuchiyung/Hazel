@@ -24,4 +24,5 @@ private:
 	Hazel::Ref<Hazel::Texture2D> m_CheckerboardTexture;
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
+	glm::vec4 m_BgColor = { 0.2f, 0.2f, 0.2f, 1.0f };
 };

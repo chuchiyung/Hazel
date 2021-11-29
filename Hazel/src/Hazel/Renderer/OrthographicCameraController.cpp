@@ -13,6 +13,55 @@ namespace Hazel {
 
 	void OrthographicCameraController::OnUpdate(Timestep ts)
 	{
+		if (Input::IsMouseButtonPressed(Mouse::ButtonRight))
+		{
+			if (Input::GetMouseX() >= 0 && Input::GetMouseY() >= 0)
+			{
+				bool flag = false;
+				float startPosX, startPosY, endPosX, endPosY;
+				//HZ_WARN("Mouse {0} and {1}", Input::GetMouseX(), Input::GetMouseY());
+				if (!flag)
+				{
+					startPosX = Input::GetMouseX();
+					startPosY = Input::GetMouseY();
+					endPosX = startPosX;
+					endPosY = startPosY;
+					flag = true;
+					HZ_WARN("1:Start {0} {1}", startPosX, startPosY);
+					HZ_WARN("1:End   {0} {1}", endPosX, endPosY);
+				}
+				if (flag)
+				{
+					endPosX = Input::GetMouseX();
+					endPosY = Input::GetMouseY();
+					flag = false;
+					HZ_WARN("2:Start {0} {1}", startPosX, startPosY);
+					HZ_WARN("2:End   {0} {1}", endPosX, endPosY);
+				}
+				if (endPosX > startPosX)
+				{
+					m_CameraPosition.x -= 5.0f * ts;
+				}
+				if (endPosX < startPosX)
+				{
+					m_CameraPosition.x += 5.0f * ts;
+				}
+				if (endPosY > startPosY)
+				{
+					m_CameraPosition.y += 5.0f * ts;
+				}
+				if (endPosY < startPosY)
+				{
+					m_CameraPosition.y -= 5.0f * ts;
+				}
+				
+				
+			}
+			
+
+		}
+			
+
 		if (Input::IsKeyPressed(Key::A))
 			m_CameraPosition.x -= m_CameraTranslationSpeed * ts;
 		else if (Input::IsKeyPressed(Key::D))
